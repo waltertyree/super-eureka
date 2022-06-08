@@ -9,17 +9,17 @@ import UIKit
 
 class DrawingSegmentationView: UIView {
 
-  static private var colors: [Int32: UIColor] = [:]
+  var colorsAndTags: Annotations?
 
      func segmentationColor(with index: Int32) -> UIColor {
-         if let color = DrawingSegmentationView.colors[index] {
-             return color
-         } else {
-             let color = UIColor(hue: CGFloat(index) / CGFloat(30), saturation: 1, brightness: 1, alpha: 0.5)
-             print(index)
-             DrawingSegmentationView.colors[index] = color
-             return color
-         }
+       if index != 0 {
+         print(colorsAndTags?.labels?[Int(index)] ?? "--")
+       }
+       if let colorToReturn = colorsAndTags?.color(Int(index))  {
+         return colorToReturn
+
+       }
+       return .purple
      }
 
      var segmentationmap: SegmentationResultMLMultiArray? = nil {

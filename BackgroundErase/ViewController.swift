@@ -12,58 +12,118 @@ import Vision
 class ViewController: UIViewController {
   @IBOutlet var originalImage: UIImageView!
 
-  @IBOutlet var processedImage: DrawingSegmentationView!
+  @IBOutlet var processedImage: UIImageView!
+
+  var request: VNCoreMLRequest?
+  var visionModel: VNCoreMLModel?
+  var original: UIImage?
+
+  let segmentationModel: DeepLabV3 = {
+    do {
+      let config = MLModelConfiguration()
+      return try DeepLabV3(configuration: config)
+    } catch {
+      print("Error loading model: \(error)")
+      abort()
+    }
+  }()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
-    let original = UIImage(named:"IMG_1090")
+    self.original = UIImage(named:"IMG_1090")!
     originalImage.image = original
 
 
-    //resize to what the model wants
-    let modelInputSize = CGSize(width: 513, height: 513)
-    let resizedImage = original?.resized(to: modelInputSize)
+    if let visionModel = try? VNCoreMLModel(for: segmentationModel.model) {
+               self.visionModel = visionModel
+               request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
+               request?.imageCropAndScaleOption = .centerCrop
+           } else {
+               fatalError()
+           }
 
+    predict(with: original?.cgImage)
 
-     let modelInputImage = CIImage(cgImage: (resizedImage?.cgImage)!)
-    var modelPixelBuffer: CVPixelBuffer? = nil
-    let colorSpace = CGColorSpaceCreateDeviceRGB()
+  }
 
-    CVPixelBufferCreate(kCFAllocatorDefault, Int(modelInputSize.width), Int(modelInputSize.height), kCVPixelFormatType_32BGRA, nil, &modelPixelBuffer)
-
-    let context = CIContext()
-    guard let modelPixelBuffer = modelPixelBuffer else {
-      abort()
+  func predict(with cgImage: CGImage?) {
+         guard let request = request else { fatalError() }
+    guard let cgImage = cgImage else {
+      return
     }
 
+         let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+         try? handler.perform([request])
+     }
 
-    context.render(modelInputImage, to: modelPixelBuffer, bounds: CGRect(origin: CGPoint(x: 0, y: 0), size: modelInputSize), colorSpace: colorSpace)
+     func visionRequestDidComplete(request: VNRequest, error: Error?) {
+         if let observations = request.results as? [VNCoreMLFeatureValueObservation],
+             let segmentationmap = observations.first?.featureValue.multiArrayValue {
 
-    let model = getDeepLabV3Model()
-    let outputMaskImage = try? model?.prediction(image: modelPixelBuffer)
-    let outputImage = outputMaskImage?.semanticPredictions.image(min: 0, max: 1, axes: (0,0,1))
+           let metadata = segmentationModel.model.modelDescription.metadata[MLModelMetadataKey.creatorDefinedKey]
+           if let metadata = metadata as? Dictionary<String, Any>, let annotationString = metadata["com.apple.coreml.model.preview.params"] as? String  {
 
-    processedImage.image = outputImage?.resized(to: original!.size)
+             let annotations = try! JSONDecoder().decode(Annotations.self, from: Data(annotationString.utf8) )
+             self.processedImage.colorsAndTags = annotations
+           }
 
-
-  }
-
-  private func getDeepLabV3Model() -> DeepLabV3? {
-      do {
-          let config = MLModelConfiguration()
-          return try DeepLabV3(configuration: config)
-      } catch {
-          print("Error loading model: \(error)")
-          return nil
-      }
-  }
+           let maskImage = segmentationmap.image(min: 0, max: 1)
+             processedImage.segmentationmap = SegmentationResultMLMultiArray(mlMultiArray: segmentationmap)
+           
+           DispatchQueue.main.async {
+             self.processedImage = maskImage.resizeImageTo(size: original?.size ?? .zero)
+           }
+         }
+     }
 
 }
 
+class SegmentationResultMLMultiArray {
+    let mlMultiArray: MLMultiArray
+    let segmentationmapWidthSize: Int
+    let segmentationmapHeightSize: Int
+
+    init(mlMultiArray: MLMultiArray) {
+        self.mlMultiArray = mlMultiArray
+        self.segmentationmapWidthSize = mlMultiArray.shape[0].intValue
+        self.segmentationmapHeightSize = mlMultiArray.shape[1].intValue
+    }
+
+    subscript(colunmIndex: Int, rowIndex: Int) -> NSNumber {
+        let index = colunmIndex*(segmentationmapHeightSize) + rowIndex
+        return mlMultiArray[index]
+    }
+}
+
+
+extension CGImage {
+    func resize(size:CGSize) -> CGImage? {
+        let width: Int = Int(size.width)
+        let height: Int = Int(size.height)
+
+        let bytesPerPixel = self.bitsPerPixel / self.bitsPerComponent
+        let destBytesPerRow = width * bytesPerPixel
+
+
+        guard let colorSpace = self.colorSpace else { return nil }
+        guard let context = CGContext(data: nil, width: width, height: height, bitsPerComponent: self.bitsPerComponent, bytesPerRow: destBytesPerRow, space: colorSpace, bitmapInfo: self.alphaInfo.rawValue) else { return nil }
+
+        context.interpolationQuality = .high
+        context.draw(self, in: CGRect(x: 0, y: 0, width: width, height: height))
+
+        return context.makeImage()
+    }
+}
+
 extension UIImage {
-    func resized(to size: CGSize) -> UIImage {
-        return UIGraphicsImageRenderer(size: size).image { _ in
-            draw(in: CGRect(origin: .zero, size: size))
-        }
+
+    func resizeImageTo(size: CGSize) -> UIImage? {
+
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        self.draw(in: CGRect(origin: CGPoint.zero, size: size))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return resizedImage
     }
 }

@@ -16,26 +16,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Kbr-dJ-Xgk">
-                                <rect key="frame" x="20" y="44" width="382" height="818"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PkR-1p-xRa">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="404"/>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2l4-Zf-gux" customClass="DrawingSegmentationView" customModule="BackgroundErase" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="414" width="382" height="404"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                </subviews>
-                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PkR-1p-xRa">
+                                <rect key="frame" x="16" y="64" width="382" height="586"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2l4-Zf-gux" customClass="UIImageView">
+                                <rect key="frame" x="16" y="64" width="382" height="586"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Kbr-dJ-Xgk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="5de-C3-wWh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kbr-dJ-Xgk" secondAttribute="trailing" constant="12" id="KlR-1x-5Nf"/>
-                            <constraint firstItem="Kbr-dJ-Xgk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NPq-dr-zgF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Kbr-dJ-Xgk" secondAttribute="bottom" id="cCO-lj-9oO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PkR-1p-xRa" secondAttribute="trailing" constant="16" id="VpY-c5-Hkx"/>
+                            <constraint firstItem="2l4-Zf-gux" firstAttribute="centerX" secondItem="PkR-1p-xRa" secondAttribute="centerX" id="ZPv-5E-KZy"/>
+                            <constraint firstItem="PkR-1p-xRa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="bUI-C4-W1k"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="PkR-1p-xRa" secondAttribute="bottom" constant="212" id="dA0-MA-mFJ"/>
+                            <constraint firstItem="2l4-Zf-gux" firstAttribute="centerY" secondItem="PkR-1p-xRa" secondAttribute="centerY" id="eLR-g0-siK"/>
+                            <constraint firstItem="2l4-Zf-gux" firstAttribute="width" secondItem="PkR-1p-xRa" secondAttribute="width" id="eLw-zj-SGI"/>
+                            <constraint firstItem="PkR-1p-xRa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="mfv-sl-6j5"/>
+                            <constraint firstItem="2l4-Zf-gux" firstAttribute="height" secondItem="PkR-1p-xRa" secondAttribute="height" id="s25-gM-XQy"/>
                         </constraints>
                     </view>
                     <connections>
