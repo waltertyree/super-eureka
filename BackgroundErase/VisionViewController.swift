@@ -13,7 +13,6 @@ import CoreImage
 class VisionViewController: UIViewController {
 
   private var segmentationRequest: VNGeneratePersonSegmentationRequest?
-  private var faceCropRequest: VNDetectFaceRectanglesRequest?
 
   @IBOutlet var originalImageView: UIImageView!
   var originalImage: UIImage?
@@ -23,8 +22,7 @@ class VisionViewController: UIViewController {
     super.viewDidLoad()
     originalImage = UIImage(named: "masked")!
 
-    faceCropRequest = VNDetectFaceRectanglesRequest()
-    segmentationRequest = VNGeneratePersonSegmentationRequest(completionHandler: visionRequestDidComplete)
+    segmentationRequest = VNGeneratePersonSegmentationRequest()
     segmentationRequest?.qualityLevel = .balanced
     segmentationRequest?.outputPixelFormat = kCVPixelFormatType_OneComponent8
   }
@@ -48,8 +46,6 @@ class VisionViewController: UIViewController {
 
     DispatchQueue.main.async {
 
-      // Scale the mask image to fit the bounds of the video frame.
-      let context = CIContext(options: [CIContextOption.useSoftwareRenderer: false])
 
       let backgroundUIImage = UIImage(named: "starfield")!.resized(to: originalSize)
       let background = CIImage(cgImage: backgroundUIImage.cgImage!)
@@ -66,27 +62,21 @@ class VisionViewController: UIViewController {
     }
   }
 
-  func visionRequestDidComplete(request: VNRequest, error: Error?) {
-    guard let request = request as? VNGeneratePersonSegmentationRequest else { abort() }
+
+  @IBAction func applyFilter(_ sender: Any) {
+    guard let originalCG = originalImage?.cgImage, let segmentationRequest = self.segmentationRequest else { abort() }
+    Logger().info("Start: \(Date(), privacy: .public)")
+
+    let handler = VNImageRequestHandler(cgImage: originalCG)
+
+    try? handler.perform([segmentationRequest])
+
     guard let maskPixelBuffer =
-            request.results?.first?.pixelBuffer else { return }
+            segmentationRequest.results?.first?.pixelBuffer else { return }
 
     let maskImage = CGImage.create(pixelBuffer: maskPixelBuffer)
 
 
     applyBackgroundMask(maskImage)
-  }
-  
-  @IBAction func applyFilter(_ sender: Any) {
-    guard let originalCG = originalImage?.cgImage, let segmentationRequest = self.segmentationRequest, let faceCropRequest = self.faceCropRequest else { abort() }
-    Logger().info("Start: \(Date(), privacy: .public)")
-
-    let handler = VNImageRequestHandler(cgImage: originalCG)
-
-    try? handler.perform([segmentationRequest, faceCropRequest])
-
-    if let faceRect = faceCropRequest.results?.first as? VNFaceObservation {
-      self.cropRect = faceRect.boundingBox
-    }
   }
 }

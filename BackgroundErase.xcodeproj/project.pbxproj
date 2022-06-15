@@ -9,15 +9,29 @@
 /* Begin PBXBuildFile section */
 		D4099CE0284F749A00F20EFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4099CDF284F749A00F20EFF /* AppDelegate.swift */; };
 		D4099CE2284F749A00F20EFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4099CE1284F749A00F20EFF /* SceneDelegate.swift */; };
-		D4099CE4284F749A00F20EFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4099CE3284F749A00F20EFF /* ViewController.swift */; };
+		D4099CE4284F749A00F20EFF /* DeepLabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4099CE3284F749A00F20EFF /* DeepLabViewController.swift */; };
 		D4099CE7284F749A00F20EFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4099CE5284F749A00F20EFF /* Main.storyboard */; };
 		D4099CE9284F749E00F20EFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4099CE8284F749E00F20EFF /* Assets.xcassets */; };
 		D4099CEC284F749E00F20EFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4099CEA284F749E00F20EFF /* LaunchScreen.storyboard */; };
 		D4099CF4284F74B800F20EFF /* DeepLabV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D4099CF3284F74B800F20EFF /* DeepLabV3.mlmodel */; };
-		D4099CF82850295B00F20EFF /* MLMultiArray+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4099CF72850295B00F20EFF /* MLMultiArray+Image.swift */; };
-		D4099CFA28502A3C00F20EFF /* CGImage+RawBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4099CF928502A3C00F20EFF /* CGImage+RawBytes.swift */; };
-		D4099CFC28502A7300F20EFF /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4099CFB28502A7300F20EFF /* Math.swift */; };
-		D4099CFE2850335E00F20EFF /* DrawingSegmentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4099CFD2850335E00F20EFF /* DrawingSegmentationView.swift */; };
+		D4CCD0A12858EDFE008D1525 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD0902858EDFE008D1525 /* Array+Extensions.swift */; };
+		D4CCD0A22858EDFE008D1525 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD0912858EDFE008D1525 /* Math.swift */; };
+		D4CCD0A32858EDFE008D1525 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD0922858EDFE008D1525 /* UIImage+CVPixelBuffer.swift */; };
+		D4CCD0A42858EDFE008D1525 /* Predictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD0932858EDFE008D1525 /* Predictions.swift */; };
+		D4CCD0A52858EDFE008D1525 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD0942858EDFE008D1525 /* UIImage+Extensions.swift */; };
+		D4CCD0A62858EDFE008D1525 /* CGImagePropertyOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD0952858EDFE008D1525 /* CGImagePropertyOrientation.swift */; };
+		D4CCD0A72858EDFE008D1525 /* UIImage+RawBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD0962858EDFE008D1525 /* UIImage+RawBytes.swift */; };
+		D4CCD0A82858EDFE008D1525 /* MLMultiArray+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD0972858EDFE008D1525 /* MLMultiArray+Helpers.swift */; };
+		D4CCD0A92858EDFE008D1525 /* MLModel+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD0982858EDFE008D1525 /* MLModel+Images.swift */; };
+		D4CCD0AA2858EDFE008D1525 /* CoreML+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD0992858EDFE008D1525 /* CoreML+Combine.swift */; };
+		D4CCD0AB2858EDFE008D1525 /* CVPixelBuffer+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD09A2858EDFE008D1525 /* CVPixelBuffer+Create.swift */; };
+		D4CCD0AC2858EDFE008D1525 /* CGImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD09B2858EDFE008D1525 /* CGImage+CVPixelBuffer.swift */; };
+		D4CCD0AD2858EDFE008D1525 /* NonMaxSuppression.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD09C2858EDFE008D1525 /* NonMaxSuppression.swift */; };
+		D4CCD0AE2858EDFE008D1525 /* CGImage+RawBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD09D2858EDFE008D1525 /* CGImage+RawBytes.swift */; };
+		D4CCD0AF2858EDFE008D1525 /* MLMultiArray+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD09E2858EDFE008D1525 /* MLMultiArray+Image.swift */; };
+		D4CCD0B02858EDFE008D1525 /* CVPixelBuffer+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD09F2858EDFE008D1525 /* CVPixelBuffer+Resize.swift */; };
+		D4CCD0B12858EDFE008D1525 /* CVPixelBuffer+Rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD0A02858EDFE008D1525 /* CVPixelBuffer+Rotate.swift */; };
+		D4CCD0B32858F4A3008D1525 /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCD0B22858F4A3008D1525 /* VisionViewController.swift */; };
 		D4CF12082850E1D500391A76 /* DeepLabV3Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CF12072850E1D500391A76 /* DeepLabV3Helpers.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,16 +39,30 @@
 		D4099CDC284F749A00F20EFF /* BackgroundErase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundErase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4099CDF284F749A00F20EFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4099CE1284F749A00F20EFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D4099CE3284F749A00F20EFF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D4099CE3284F749A00F20EFF /* DeepLabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLabViewController.swift; sourceTree = "<group>"; };
 		D4099CE6284F749A00F20EFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D4099CE8284F749E00F20EFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4099CEB284F749E00F20EFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4099CED284F749E00F20EFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4099CF3284F74B800F20EFF /* DeepLabV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DeepLabV3.mlmodel; sourceTree = "<group>"; };
-		D4099CF72850295B00F20EFF /* MLMultiArray+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Image.swift"; sourceTree = "<group>"; };
-		D4099CF928502A3C00F20EFF /* CGImage+RawBytes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage+RawBytes.swift"; sourceTree = "<group>"; };
-		D4099CFB28502A7300F20EFF /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
-		D4099CFD2850335E00F20EFF /* DrawingSegmentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingSegmentationView.swift; sourceTree = "<group>"; };
+		D4CCD0902858EDFE008D1525 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		D4CCD0912858EDFE008D1525 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		D4CCD0922858EDFE008D1525 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
+		D4CCD0932858EDFE008D1525 /* Predictions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predictions.swift; sourceTree = "<group>"; };
+		D4CCD0942858EDFE008D1525 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		D4CCD0952858EDFE008D1525 /* CGImagePropertyOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGImagePropertyOrientation.swift; sourceTree = "<group>"; };
+		D4CCD0962858EDFE008D1525 /* UIImage+RawBytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+RawBytes.swift"; sourceTree = "<group>"; };
+		D4CCD0972858EDFE008D1525 /* MLMultiArray+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Helpers.swift"; sourceTree = "<group>"; };
+		D4CCD0982858EDFE008D1525 /* MLModel+Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLModel+Images.swift"; sourceTree = "<group>"; };
+		D4CCD0992858EDFE008D1525 /* CoreML+Combine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreML+Combine.swift"; sourceTree = "<group>"; };
+		D4CCD09A2858EDFE008D1525 /* CVPixelBuffer+Create.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Create.swift"; sourceTree = "<group>"; };
+		D4CCD09B2858EDFE008D1525 /* CGImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
+		D4CCD09C2858EDFE008D1525 /* NonMaxSuppression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonMaxSuppression.swift; sourceTree = "<group>"; };
+		D4CCD09D2858EDFE008D1525 /* CGImage+RawBytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+RawBytes.swift"; sourceTree = "<group>"; };
+		D4CCD09E2858EDFE008D1525 /* MLMultiArray+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Image.swift"; sourceTree = "<group>"; };
+		D4CCD09F2858EDFE008D1525 /* CVPixelBuffer+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Resize.swift"; sourceTree = "<group>"; };
+		D4CCD0A02858EDFE008D1525 /* CVPixelBuffer+Rotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Rotate.swift"; sourceTree = "<group>"; };
+		D4CCD0B22858F4A3008D1525 /* VisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewController.swift; sourceTree = "<group>"; };
 		D4CF12072850E1D500391A76 /* DeepLabV3Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLabV3Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,19 +98,41 @@
 			children = (
 				D4099CDF284F749A00F20EFF /* AppDelegate.swift */,
 				D4099CE1284F749A00F20EFF /* SceneDelegate.swift */,
-				D4099CE3284F749A00F20EFF /* ViewController.swift */,
-				D4099CFD2850335E00F20EFF /* DrawingSegmentationView.swift */,
-				D4099CF928502A3C00F20EFF /* CGImage+RawBytes.swift */,
-				D4099CF72850295B00F20EFF /* MLMultiArray+Image.swift */,
-				D4099CFB28502A7300F20EFF /* Math.swift */,
+				D4099CE3284F749A00F20EFF /* DeepLabViewController.swift */,
+				D4CCD0B22858F4A3008D1525 /* VisionViewController.swift */,
+				D4CF12072850E1D500391A76 /* DeepLabV3Helpers.swift */,
+				D4CCD08F2858EDFE008D1525 /* CoreMLHelpers copy */,
 				D4099CE5284F749A00F20EFF /* Main.storyboard */,
 				D4099CE8284F749E00F20EFF /* Assets.xcassets */,
 				D4099CEA284F749E00F20EFF /* LaunchScreen.storyboard */,
 				D4099CED284F749E00F20EFF /* Info.plist */,
 				D4099CF3284F74B800F20EFF /* DeepLabV3.mlmodel */,
-				D4CF12072850E1D500391A76 /* DeepLabV3Helpers.swift */,
 			);
 			path = BackgroundErase;
+			sourceTree = "<group>";
+		};
+		D4CCD08F2858EDFE008D1525 /* CoreMLHelpers copy */ = {
+			isa = PBXGroup;
+			children = (
+				D4CCD0902858EDFE008D1525 /* Array+Extensions.swift */,
+				D4CCD0912858EDFE008D1525 /* Math.swift */,
+				D4CCD0922858EDFE008D1525 /* UIImage+CVPixelBuffer.swift */,
+				D4CCD0932858EDFE008D1525 /* Predictions.swift */,
+				D4CCD0942858EDFE008D1525 /* UIImage+Extensions.swift */,
+				D4CCD0952858EDFE008D1525 /* CGImagePropertyOrientation.swift */,
+				D4CCD0962858EDFE008D1525 /* UIImage+RawBytes.swift */,
+				D4CCD0972858EDFE008D1525 /* MLMultiArray+Helpers.swift */,
+				D4CCD0982858EDFE008D1525 /* MLModel+Images.swift */,
+				D4CCD0992858EDFE008D1525 /* CoreML+Combine.swift */,
+				D4CCD09A2858EDFE008D1525 /* CVPixelBuffer+Create.swift */,
+				D4CCD09B2858EDFE008D1525 /* CGImage+CVPixelBuffer.swift */,
+				D4CCD09C2858EDFE008D1525 /* NonMaxSuppression.swift */,
+				D4CCD09D2858EDFE008D1525 /* CGImage+RawBytes.swift */,
+				D4CCD09E2858EDFE008D1525 /* MLMultiArray+Image.swift */,
+				D4CCD09F2858EDFE008D1525 /* CVPixelBuffer+Resize.swift */,
+				D4CCD0A02858EDFE008D1525 /* CVPixelBuffer+Rotate.swift */,
+			);
+			path = "CoreMLHelpers copy";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,15 +206,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4099CF82850295B00F20EFF /* MLMultiArray+Image.swift in Sources */,
-				D4099CE4284F749A00F20EFF /* ViewController.swift in Sources */,
+				D4CCD0AF2858EDFE008D1525 /* MLMultiArray+Image.swift in Sources */,
+				D4099CE4284F749A00F20EFF /* DeepLabViewController.swift in Sources */,
+				D4CCD0B12858EDFE008D1525 /* CVPixelBuffer+Rotate.swift in Sources */,
+				D4CCD0B02858EDFE008D1525 /* CVPixelBuffer+Resize.swift in Sources */,
+				D4CCD0A12858EDFE008D1525 /* Array+Extensions.swift in Sources */,
 				D4CF12082850E1D500391A76 /* DeepLabV3Helpers.swift in Sources */,
-				D4099CFA28502A3C00F20EFF /* CGImage+RawBytes.swift in Sources */,
-				D4099CFC28502A7300F20EFF /* Math.swift in Sources */,
+				D4CCD0A82858EDFE008D1525 /* MLMultiArray+Helpers.swift in Sources */,
+				D4CCD0A62858EDFE008D1525 /* CGImagePropertyOrientation.swift in Sources */,
+				D4CCD0A22858EDFE008D1525 /* Math.swift in Sources */,
+				D4CCD0A42858EDFE008D1525 /* Predictions.swift in Sources */,
+				D4CCD0AA2858EDFE008D1525 /* CoreML+Combine.swift in Sources */,
+				D4CCD0B32858F4A3008D1525 /* VisionViewController.swift in Sources */,
+				D4CCD0A72858EDFE008D1525 /* UIImage+RawBytes.swift in Sources */,
+				D4CCD0AE2858EDFE008D1525 /* CGImage+RawBytes.swift in Sources */,
+				D4CCD0AB2858EDFE008D1525 /* CVPixelBuffer+Create.swift in Sources */,
 				D4099CE0284F749A00F20EFF /* AppDelegate.swift in Sources */,
-				D4099CFE2850335E00F20EFF /* DrawingSegmentationView.swift in Sources */,
+				D4CCD0AC2858EDFE008D1525 /* CGImage+CVPixelBuffer.swift in Sources */,
 				D4099CE2284F749A00F20EFF /* SceneDelegate.swift in Sources */,
+				D4CCD0A92858EDFE008D1525 /* MLModel+Images.swift in Sources */,
+				D4CCD0A52858EDFE008D1525 /* UIImage+Extensions.swift in Sources */,
 				D4099CF4284F74B800F20EFF /* DeepLabV3.mlmodel in Sources */,
+				D4CCD0AD2858EDFE008D1525 /* NonMaxSuppression.swift in Sources */,
+				D4CCD0A32858EDFE008D1525 /* UIImage+CVPixelBuffer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
