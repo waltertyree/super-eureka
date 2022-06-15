@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vkq-5r-HKs">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -8,46 +8,113 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--DeepLab-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BackgroundErase" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="DeepLabViewController" customModule="BackgroundErase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PkR-1p-xRa">
-                                <rect key="frame" x="16" y="64" width="382" height="586"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PkR-1p-xRa">
+                                <rect key="frame" x="16" y="20" width="343" height="482"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PkR-1p-xRa" secondAttribute="height" multiplier="382:537" id="kg3-7U-ZXQ"/>
+                                </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2l4-Zf-gux" customClass="UIImageView">
-                                <rect key="frame" x="16" y="64" width="382" height="586"/>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdD-pP-neY">
+                                <rect key="frame" x="138.5" y="541" width="98" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Apply Filter"/>
+                                <connections>
+                                    <action selector="applyFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kvA-Yp-vVF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="OdD-pP-neY" firstAttribute="centerX" secondItem="PkR-1p-xRa" secondAttribute="centerX" id="Ji7-Zj-p2u"/>
+                            <constraint firstItem="OdD-pP-neY" firstAttribute="top" secondItem="PkR-1p-xRa" secondAttribute="bottom" constant="39" id="SS9-21-gs4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PkR-1p-xRa" secondAttribute="trailing" constant="16" id="VpY-c5-Hkx"/>
-                            <constraint firstItem="2l4-Zf-gux" firstAttribute="centerX" secondItem="PkR-1p-xRa" secondAttribute="centerX" id="ZPv-5E-KZy"/>
                             <constraint firstItem="PkR-1p-xRa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="bUI-C4-W1k"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="PkR-1p-xRa" secondAttribute="bottom" constant="212" id="dA0-MA-mFJ"/>
-                            <constraint firstItem="2l4-Zf-gux" firstAttribute="centerY" secondItem="PkR-1p-xRa" secondAttribute="centerY" id="eLR-g0-siK"/>
-                            <constraint firstItem="2l4-Zf-gux" firstAttribute="width" secondItem="PkR-1p-xRa" secondAttribute="width" id="eLw-zj-SGI"/>
                             <constraint firstItem="PkR-1p-xRa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="mfv-sl-6j5"/>
-                            <constraint firstItem="2l4-Zf-gux" firstAttribute="height" secondItem="PkR-1p-xRa" secondAttribute="height" id="s25-gM-XQy"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="DeepLab" image="brain.head.profile" catalog="system" id="OIF-Da-0m9"/>
                     <connections>
                         <outlet property="originalImage" destination="PkR-1p-xRa" id="vW8-Gh-kRX"/>
-                        <outlet property="processedImage" destination="2l4-Zf-gux" id="4Yx-KD-JTx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="84"/>
+            <point key="canvasLocation" x="939.13043478260875" y="83.705357142857139"/>
+        </scene>
+        <!--Vision-->
+        <scene sceneID="koH-ZA-r1g">
+            <objects>
+                <viewController id="y4i-l6-eyQ" customClass="VisionViewController" customModule="BackgroundErase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kny-zX-dil">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VDW-t1-pyK">
+                                <rect key="frame" x="16" y="0.0" width="343" height="482"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="VDW-t1-pyK" secondAttribute="height" multiplier="382:537" id="iuq-zu-Zmc"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzJ-wV-VrT">
+                                <rect key="frame" x="138.5" y="521" width="98" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Apply Filter"/>
+                                <connections>
+                                    <action selector="applyFilter:" destination="y4i-l6-eyQ" eventType="touchUpInside" id="Cjg-oU-knd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="No0-YS-ysU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VDW-t1-pyK" firstAttribute="leading" secondItem="No0-YS-ysU" secondAttribute="leading" constant="16" id="59x-tu-QNn"/>
+                            <constraint firstItem="No0-YS-ysU" firstAttribute="trailing" secondItem="VDW-t1-pyK" secondAttribute="trailing" constant="16" id="72e-4q-U6L"/>
+                            <constraint firstItem="zzJ-wV-VrT" firstAttribute="centerX" secondItem="VDW-t1-pyK" secondAttribute="centerX" id="fbe-9z-1kr"/>
+                            <constraint firstItem="VDW-t1-pyK" firstAttribute="top" secondItem="No0-YS-ysU" secondAttribute="top" id="pDv-mR-ya4"/>
+                            <constraint firstItem="zzJ-wV-VrT" firstAttribute="top" secondItem="VDW-t1-pyK" secondAttribute="bottom" constant="39" id="pIG-oH-aVT"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Vision" image="eye" catalog="system" id="Dfy-xh-jgc"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="originalImageView" destination="VDW-t1-pyK" id="ClA-fD-CSw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uer-UC-QoU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="912" y="744"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yHH-HD-Wqt">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="vkq-5r-HKs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dlH-k1-gWB">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="HSW-wa-vgM"/>
+                        <segue destination="y4i-l6-eyQ" kind="relationship" relationship="viewControllers" id="wW5-Is-ScN"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SKf-0g-292" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28.985507246376812" y="83.705357142857139"/>
         </scene>
     </scenes>
     <resources>
+        <image name="brain.head.profile" catalog="system" width="114" height="128"/>
+        <image name="eye" catalog="system" width="128" height="81"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

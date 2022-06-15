@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreML
 
 struct Annotations: Decodable {
   var labels: [String]?
@@ -32,4 +33,14 @@ struct Annotations: Decodable {
     }
     return color
   }
+}
+
+func extractAnnotations(from modelDescription: MLModelDescription) -> Annotations? {
+  let metadata = modelDescription.metadata[MLModelMetadataKey.creatorDefinedKey]
+  if let metadata = metadata as? Dictionary<String, Any>, let annotationString = metadata["com.apple.coreml.model.preview.params"] as? String  {
+
+    let annotations = try? JSONDecoder().decode(Annotations.self, from: Data(annotationString.utf8) )
+    return annotations
+  }
+  return nil
 }
